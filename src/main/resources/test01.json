@@ -1,0 +1,20 @@
+[
+  {
+    "skills": "1,2,",
+    "substatus": 202,
+    "starttime": "2018.07.17 15:49:14",
+    "presubstatuslen": 1,
+    "logintime": "2018.07.17 15:49:13",
+    "srcagentid": 101,
+    "causetype": 0,
+    "vcid": 1,
+    "mainstatus": 2,
+    "softwaretype": 0,
+    "presubstatus": 100,
+    "agentid": 101,
+    "groupid": 1,
+    "agentphone": "879431",
+    "ipaddr": "10.123.456.1",
+    "macaddr": "00-16-3E-84-18-AD"
+  }
+]

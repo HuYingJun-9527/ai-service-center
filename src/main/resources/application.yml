@@ -1,0 +1,86 @@
+spring:
+  profiles:
+    active: local
+  mail:
+    host: smtp.qq.com  # 根据你的邮箱服务商修改
+    port: 587          # 或 465 (SSL)
+    username: 2496433105@qq.com
+    password: kzjljkjylknyebhb  # 邮箱授权码，不是登录密码
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+  application:
+    name: ai-code-helper
+  # 添加Redis配置
+  data:
+    redis:
+      host: localhost    # Redis服务器地址
+      port: 6379         # Redis端口，默认6379
+      password: bmmVKVRji*6bIvQW   # Redis密码，如果没有密码则留空
+      database: 0        # Redis数据库索引，默认0
+      timeout: 2000ms    # 连接超时时间
+      lettuce:
+        pool:
+          max-active: 8      # 连接池最大连接数
+          max-idle: 8        # 连接池最大空闲连接数
+          min-idle: 0        # 连接池最小空闲连接数
+          max-wait: -1ms     # 连接池最大阻塞等待时间
+server:
+  port: 8081
+  servlet:
+    context-path: /api
+    multipart:
+      enabled: true
+      max-file-size: 10MB      # 单个文件最大 10MB
+      max-request-size: 20MB  # 请求最大 20MB
+# MCP服务器配置
+mcp:
+  servers:
+    MiniMax:
+      command: "uvx"
+      args:
+        - "minimax-coding-plan-mcp"
+        - "-y"
+      env:
+        MINIMAX_API_KEY: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJHcm91cE5hbWUiOiJlcyIsIlVzZXJOYW1lIjoiZXMiLCJBY2NvdW50IjoiIiwiU3ViamVjdElEIjoiMjAwMDQ4NzcwNTI0NjQ0MTUyOSIsIlBob25lIjoiMTY2MjE3NzIzMzkiLCJHcm91cElEIjoiMjAwMDQ4NzcwNTI0MjI0NzIyNSIsIlBhZ2VOYW1lIjoiIiwiTWFpbCI6IiIsIkNyZWF0ZVRpbWUiOiIyMDI1LTEyLTI0IDE2OjEwOjIzIiwiVG9rZW5UeXBlIjoxLCJpc3MiOiJtaW5pbWF4In0.x-8Q63HB_OvSUffy1FU_RttuMen2le4_lDG5JGMy_ciMxWHKOdM__OjCfacwhR6ER2uA0MEysQo8dOWC84iXvyrZBtvlQfC8gRcqtP_7zbSFfJw2xMMAov6VTEjUAKxEC6IwIzkKDUgm-jLMa8CIZmjpjLyZcMKVWcMZHnZLEhxC9nNwYIXyjotjt23GKYtmAN_ZQg-6GZH9WJYKB3GwsHkL15V2YL5h7BHwN7lIL7XFI0Zop7cOjyPwOItjG4DbpATInmgPRyK5wGogQhR50apsj4_8qCOy_ndCrM9vyBKiAcGVLg-aM36QwS1hDu6lYqKg9ETkjmIL1qnet2O5Vw"
+        MINIMAX_API_HOST: "https://api.minimax.com"
+
+# 在文件末尾添加以下Swagger配置
+springdoc:
+  api-docs:
+    path: /api/v3/api-docs
+  swagger-ui:
+    path: /api/swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+    doc-expansion: none
+    display-request-duration: true
+    filter: true
+  packages-to-scan: com.hyj.aicodehelper.controller
+  paths-to-match: /api/**
+
+  # RAG数据管理配置
+rag:
+  # 文件上传临时目录
+  upload:
+    temp-dir: /tmp/rag-uploads
+  # 支持的文档类型定义
+  document-types:
+    weather: "天气相关文档"
+    programming: "编程相关文档"
+    interview: "面试相关文档"
+    general: "通用文档"
+
+rest:
+  client:
+    request:
+      connect-timeout: 10000  # 连接超时10秒
+      read-timeout: 30000     # 读取超时30秒

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:api.minimax.chat)",
+      "WebFetch(domain:github.com)"
+    ]
+  }
+}
