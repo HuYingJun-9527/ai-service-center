@@ -1,0 +1,44 @@
+
+langchain4j:
+  ollama:
+    embedding-model:
+      base-url: http://localhost:11434 # Ollama 服务地址
+      model-name: nomic-embed-text     # 你拉取的模型名称
+      timeout: 120                    # 超时设置可稍长
+      log-requests: true               # 可选，用于调试
+      log-responses: true              # 可选，用于调试
+    chat-model:
+      qwen-model-name: qwen3-vl:8b
+      base-url: http://localhost:11434 # Ollama 服务地址
+      timeout: 60
+  community:
+    dashscope:
+      chat-model:
+        model-name: qwen-max
+        api-key:
+      streaming-chat-model:
+        model-name: qwen-max
+        api-key:
+  # DeepSeek配置
+  deepseek:
+    chat-model:
+      model-name: deepseek-chat
+      api-key:
+      base-url: https://api.deepseek.com
+      timeout: 60s
+      temperature: 0.7
+      max-tokens: 4096
+  # Minimax模型配置
+  minimax:
+    chat-model:
+      model-name: MiniMax-M2.1
+      api-key:
+      base-url: https://api.minimax.chat/v1
+#      embedding-base-url: "https://api.minimax.chat/v1/embeddings" # Embedding专用地址
+#      embedding-model-name: "embo-01" # MiniMax的embedding模型
+bigmodel:
+  api-key:
+
+# 默认收件人配置（可选）
+email:
+  default-receiver:   # 如果没有指定收件人，使用这个
